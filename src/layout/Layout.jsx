@@ -4,10 +4,12 @@ import Navbar from './Navbar';
 
 const Layout = () => {
     return (
-        <>
+        <div data-theme="winter">
             <Navbar />
-            <Outlet />
-        </>
+            <main className='container mx-auto px-5'>
+                <Outlet />
+            </main>
+        </div>
     );
 };
 
