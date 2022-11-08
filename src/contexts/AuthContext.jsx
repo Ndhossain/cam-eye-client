@@ -34,7 +34,7 @@ function AuthProvider({ children }) {
     const register = async (email, password, userName) => {
         setLoading(true);
         const auth = getAuth();
-        await createUserWithEmailAndPassword(auth, email, password);
+        const res = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(auth.currentUser, {
             displayName: userName,
         });
@@ -42,6 +42,7 @@ function AuthProvider({ children }) {
         setCurrentUser({
             ...user,
         });
+        return res;
     };
 
     const login = (email, password) => {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
     console.log(currentUser);
     return (
         <div className="navbar bg-base-100">
@@ -22,6 +22,7 @@ const Navbar = () => {
                         <li><Link className='p-2 font-medium' to='/services'>Services</Link></li>
                         <li><Link className='p-2 font-medium' to='/login'>Login</Link></li>
                         <li><Link className='p-2 font-medium' to='/register'>Register</Link></li>
+                        <li><button onClick={() => logout()} type='button'>Log Out</button></li>
                     </ul>
                 </div>
             </div>
