@@ -1,10 +1,13 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const SocialLogin = ({ setError }) => {
-    const { providerLogin, setLoading } = useAuth();
+    const { providerLogin, setLoading, loading } = useAuth();
+    const navigate = useNavigate();
     const googleProvider = new GoogleAuthProvider();
 
     const googleLogin = async () => {
@@ -20,15 +23,20 @@ const SocialLogin = ({ setError }) => {
             });
             const token = await response.json();
             localStorage.setItem('camEye-token', token.jwt);
+            toast.success('Successfully Logged In');
+            navigate('/');
         } catch (err) {
             setError(err.message);
+            toast.error('Something went wrong!');
             setLoading(false);
         }
     }
 
     return (
         <div className='flex justify-center'>
-            <FcGoogle onClick={googleLogin} size={30} className="cursor-pointer" />
+            <button disabled={loading} type='button' onClick={googleLogin}>
+                <FcGoogle size={30} />
+            </button>
         </div>
     );
 };

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from '../login/SocialLogin';
 
 const Register = () => {
     const [error, setError] = useState(null);
     const [conditions, setConditions] = useState(false);
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { register: registerUser, loading, setLoading } = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
@@ -26,13 +28,16 @@ const Register = () => {
             });
             const token = await response.json();
             localStorage.setItem('camEye-token', token.jwt);
+            reset();
+            toast.success('Successfully Registered');
+            navigate('/');
         } catch (err) {
-            console.log(err);
             if (err.message.includes('auth/email-already-in-use')) {
                 setError('Email already in use.')
-             } else {
-                setError('Something went wrong!')
-             }
+            } else {
+               setError('Something went wrong!')
+            }
+            toast.error('Something went wrong!');
             setLoading(false);
         }
     }
@@ -42,29 +47,50 @@ const Register = () => {
             <form onSubmit={handleSubmit(onSubmit)} className='mx-auto flex flex-col w-full sm:w-3/4 md:w-2/4 lg:w-1/4 gap-5 p-5 shadow-2xl rounded-lg mt-10 md:mt-16'>
                 <h1 className='text-4xl font-semibold'>Register now</h1>
                 {error && <p className='text-red-400'>{error}</p>}
-                <input 
-                    type="text"
-                    placeholder="Full name"
-                    className="border-b border-primary outline-none p-2"
-                    {...register('name', {required: true})}
-                /><input 
-                    type="email"
-                    placeholder="Enter email"
-                    className="border-b border-primary outline-none p-2"
-                    {...register('email', {required: true})}
-                />
-                <input 
-                    type="password"
-                    placeholder="Enter Password"
-                    className="border-b border-primary outline-none p-2"
-                    {...register('password', {required: true})}
-                />
-                <input 
-                    type="password"
-                    placeholder="Confirm Password"
-                    className="border-b border-primary outline-none p-2"
-                    {...register('confirmPassword', {required: true})}
-                />
+                <div>
+                    <input 
+                        type="text"
+                        placeholder="Full name"
+                        className="border-b border-primary outline-none p-2 w-full"
+                        {...register('name', {required: 'Can not keep this field blank'})}
+                    />
+                    <p className='text-red-400'>{errors?.name?.message}</p>
+                </div>
+                <div>
+                    <input 
+                        type="text"
+                        placeholder="Image URL"
+                        className="border-b border-primary outline-none p-2 w-full"
+                        {...register('name', {required: false})}
+                    />
+                </div>
+                <div>
+                    <input 
+                        type="email"
+                        placeholder="Enter email"
+                        className="border-b border-primary outline-none p-2 w-full"
+                        {...register('email', {required: 'Can not keep this field blank'})}
+                    />
+                    <p className='text-red-400'>{errors?.email?.message}</p>
+                </div>
+                <div>
+                    <input 
+                        type="password"
+                        placeholder="Enter Password"
+                        className="border-b border-primary outline-none p-2 w-full"
+                        {...register('password', {required: 'Can not keep this field blank'})}
+                    />
+                    <p className='text-red-400'>{errors?.password?.message}</p>
+                </div>
+                <div>
+                    <input 
+                        type="password"
+                        placeholder="Confirm Password"
+                        className="border-b border-primary outline-none p-2 w-full"
+                        {...register('confirmPassword', {required: 'Can not keep this field blank'})}
+                    />
+                    <p className='text-red-400'>{errors?.confirmPassword?.message}</p>
+                </div>
                 <div className="form-control flex-row justify-between">
                     <label className="cursor-pointer flex itmes-center gap-2">
                         <input 
