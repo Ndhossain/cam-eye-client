@@ -16,7 +16,7 @@ const ReviewContainer = ({reviewInfo}) => {
             <div>
                 <p>{review}</p>
                 <div className='flex justify-between'>
-                    <span className={`text-sm ${currentUser.uid === uid ? 'text-primary' : ''}`}>User: {currentUser.uid === uid ? 'Me' : userName}</span>
+                    <span className={`text-sm ${currentUser.uid === uid ? 'text-primary' : ''}`}>User: {currentUser.uid === uid ? "Me" : userName}</span>
                 </div>
             </div>
         </div>
