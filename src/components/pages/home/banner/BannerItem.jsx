@@ -7,7 +7,7 @@ const BannerItem = ({image}) => {
             <div className="w-full bg-black">
                 <img className="sm:h-[650px] h-[450px] w-full opacity-40" src={image} alt="banner" />
             </div>
-            <div className="absolute sm:mt-0 text-white bottom-0sm:top-0 bottom-1/2 translate-y-1/2 flex flex-col gap-5 right-1/2 translate-x-1/2">
+            <div className="absolute text-white bottom-1/2 translate-y-1/2 flex flex-col gap-5 right-1/2 translate-x-1/2">
                 <h1 className="text-4xl md:text-6xl text-center font-bold">
                     Click Your<br />Memorable Moments
                 </h1>

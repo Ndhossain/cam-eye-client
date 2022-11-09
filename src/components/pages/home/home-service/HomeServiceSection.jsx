@@ -1,9 +1,7 @@
-import React from 'react';
-import { useEffect } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
-import ServiceContainer from '../../../components/common/ServiceContainer';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ServiceContainer from '../../../common/ServiceContainer';
 
 const HomeServiceSection = () => {
     const [servicesData, setServicesData] = useState([]);
@@ -33,7 +31,7 @@ const HomeServiceSection = () => {
                         <>
                             <div className='mt-10 grid grid-cols-1 md:grid-cols-3 gap-7'>
                                 {
-                                    !error && servicesData.map(service => <ServiceContainer service={service} />)
+                                    !error && servicesData.map(service => <ServiceContainer key={service._id} service={service} />)
                                 }
                             </div>
                             <div className='flex justify-center mt-5'>

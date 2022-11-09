@@ -4,7 +4,7 @@ import { BiLogIn } from 'react-icons/bi';
 import { FaUserCircle } from 'react-icons/fa';
 import { TiUserAdd } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
     const { currentUser, logout, loading } = useAuth();

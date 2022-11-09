@@ -3,7 +3,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const SocialLogin = ({ setError }) => {
     const { providerLogin, setLoading, loading } = useAuth();
