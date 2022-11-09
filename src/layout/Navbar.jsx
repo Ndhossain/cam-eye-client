@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { BiLogIn } from 'react-icons/bi';
 import { FaUserCircle } from 'react-icons/fa';
 import { TiUserAdd } from 'react-icons/ti';
@@ -28,41 +29,48 @@ const Navbar = () => {
                         {
                             !loading && !currentUser ? (
                                 <>
-                                    <li>
+                                    <li className='my-2'>
                                         <Link className='btn btn-sm btn-primary btn-outline flex rounded-lg justify-center items-center gap-1' to='/login'>
                                             Log in <BiLogIn size={16} />
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className='my-2'>
                                         <Link className='btn btn-sm btn-primary flex justify-center items-center gap-1 rounded-lg text-white' to='/register'>
                                             Register <TiUserAdd color='white' size={16} />
                                         </Link>
                                     </li>
                                 </>
                             ) : (
-                                <>
-                                    <div className="dropdown dropdown-end">
-                                        <label tabIndex={0} className="btn btn-primary btn-outline avatar gap-1">
-                                            <div className="w-10 rounded-full">
-                                                {
-                                                    currentUser?.photoURL ? (
-                                                        <img src={currentUser.photoURL} alt="User" />
-                                                    ) : (
-                                                        <FaUserCircle size={40} />
-                                                    )
-                                                }
-                                            </div>
-                                                {currentUser?.displayName}
-                                        </label>
+                                <div className="dropdown dropdown-end">
+                                    <label tabIndex={0} className="btn btn-primary btn-outline avatar gap-1">
+                                        <div className="w-10 rounded-full">
+                                            {
+                                                currentUser?.photoURL ? (
+                                                    <img src={currentUser.photoURL} alt="User" />
+                                                ) : (
+                                                    <FaUserCircle size={40} />
+                                                )
+                                            }
+                                        </div>
+                                            {currentUser?.displayName}
+                                    </label>
                                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
                                         <li><Link className='w-full'>Add Services</Link></li>
                                         <li><Link className='w-full'>My Reviews</Link></li>
                                         <li>
-                                            <button className='w-full' onClick={() => logout()} type='button'>Logout</button>
+                                            <button 
+                                                className='w-full' 
+                                                onClick={() => {
+                                                    logout();
+                                                    toast.success('Successfully Logged Out')
+                                                }} 
+                                                type='button'
+                                            >
+                                                Logout
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
-                                </>
                             )
                         }
                     </ul>

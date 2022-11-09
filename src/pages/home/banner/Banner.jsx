@@ -19,8 +19,6 @@ const Banner = () => {
 
     const currentImage = bannerImages[currentIndex];
 
-    console.log(currentIndex);
-
     return (
         <div className="relative rounded-xl overflow-hidden w-full sm:h-[650px] h-[450px]">
             <div className="w-full absolute flex duration-300">
