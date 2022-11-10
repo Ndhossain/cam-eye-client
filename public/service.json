@@ -1,44 +1,18 @@
 [
   {
-    "price": 3500,
-    "picture": "https://i.ibb.co/y5c7LWw/guide.jpg",
-    "title": "Tour Guide & Photography",
-    "description": "I ensure that itineraries are met and that customers are being informed in an entertaining manner the location they are touring and also capturing the moments into the frame. I have experience in traveling 50+ countries. I enjoy traveling with my camera and working as a guide. If you need a photographer with traveling experience you can contact with me.\r\n",
-    "ratings": "5.00"
+    "Que": "Difference between SQL and NoSQL",
+    "Ans": "SQL is the programming language used to interface with relational databases. NoSQL is a class of DBMs that are non-relational and generally do not use SQL. SQL databases have fixed or static or predefined schema but NoSQL have dynamic schema. SQL databases are not suited for hierarchical data storage but NoSQL databases are best suited for hierarchical data storage. SQL databases are best suited for complex queries but NoSQL databases are not so good for complex queries. SQL databases are vertically scalable but NoSQL databases are horizontally scalable. SQL databases are table-based on the other hand NoSQL databases are either key-value pairs, document-based, graph databases or wide-column stores. This makes relational SQL databases a better option for applications that require multi-row transactions such as an accounting system or for legacy systems that were built for a relational structure."
   },
   {
-    "price": 2800,
-    "picture": "https://i.ibb.co/KzBPq8F/corporateevent.jpg",
-    "title": "Corporate Event Photography",
-    "description": "Corporate event photography is a vital element of promoting your event & encouraging people to attend. With the increasing popularity of image-based digital platforms like Instagram & Facebook the whole world is now extremely visual. With this in mind, visually depicting your event is key for effective marketing – if your photos aren’t captivating how will you entice people to attend? An event photographer is there to capture the people, place, actions, emotions & reactions, providing high quality, professional images that can be used across a variety of different media platforms.\r\n",
-    "ratings": "4.5"
+    "Que": "What is JWT, and how does it work?",
+    "Ans": "JWT full form is JSON Web Token. JWT is an open standard (RFC 7519) for securely transmitting information between parties as JSON object. It is compact, readable and digitally signed using a private key/ or a public key pair by the Identity Provider(IdP). The purpose of using JWT is not to hide data but to ensure the authenticity of the data. JWT is signed and encoded, not encrypted. JWT is a token based stateless authentication mechanism. Since it is a client-side based stateless session, server doesn't have to completely rely on a datastore(database) to save session information. A JSON Web Token consists of 3 parts separated by a period. They are header, payload, signature. JWT header consists of token type and algorithm used for signing and encoding. Algorithms can be HMAC, SHA256, RSA, HS256 or RS256. Payload consists of the session data called as claims. Signature is most important part of a JSON Web Token(JWT). Signature is calculated by encoding the header and payload using Base64url Encoding and concatenating them with a period separator. Which is then given to the cryptographic algorithm. Basically the identity provider(IdP) generates a JWT certifying user identity and Resource server decodes and verifies the authenticity of the token using secret salt / public key."
   },
   {
-    "price": 2200,
-    "picture": "https://i.ibb.co/XpZZ7cV/wedding.jpg",
-    "title": "Wedding Photography",
-    "description": "I have provided wedding photography and videography services to brides and grooms for 30+ years. During that time. When planning your wedding, you might be looking for affordable wedding photography prices or packages. Wedding photographer packages come in many different forms and formats. Additionally, this variety can make it very difficult to differentiate between services. Not to mention, many companies do not get into quality which is as important as your investment.\r\n",
-    "ratings": "4.7"
+    "Que": "What is the difference between javascript and NodeJS?",
+    "Ans": "Javascript is a programming language that is used for writing scripts on the website. But NodeJS is a Javascript runtime environment. Javascript can only be run in the browsers. We can run Javascript outside the browser with the help of NodeJS.JavaScript basically used on client side. But Node.js is mostly used on the server-side. Javascript is capable enough to add HTML and play with the DOM. Nodejs does not have capability to add HTML tags. Javascript can run in any browser engine as like JS core in safari and Spidermonkey in Firefox. V8 is the Javascript engine inside of node.js that parses and runs Javascript. Javascript is used in frontend development. Nodejs is used in server-side development. Some of the javascript frameworks are RamdaJS, TypedJS, etc. Some of the Nodejs modules are Lodash, express etc. These modules are to be imported from npm. JavaScript the upgraded version of ECMA script that uses Chrome’s V8 engine written in C++. Nodejs is written in C, C++ and Javascript."
   },
   {
-    "price": 1500,
-    "picture": "https://i.ibb.co/0KHmwr9/specialevent.jpg",
-    "title": "Special Event Photography",
-    "description": "Event photography collects various shots showing different emotions and highlighting key parts of the event. Photography can easily provide that evidence. For example, one of your family-friendly events might be an anniversary celebration, a graduation party, a celebration of life party, your child’s first birthday, or a housewarming party. The list can be longer and longer. Life is full of the moments that should be celebrated! These moments will never be the same a second time around! That’s why you need to capture the moments. Since these photos can explore the moments and feelings for future generations. I have large time experience in this field.\r\n",
-    "ratings": "4.8"
-  },
-  {
-    "price": 5400,
-    "picture": "https://i.ibb.co/5vGHRrz/eventmanage.jpg",
-    "title": "Event Mangement & Photography",
-    "description": "Now adays managing event is a hard task. There are lot of resposibilities that manage perfectly to make memorable event. I have a large team with experience of 30+ event managing and i am a proffesional photographer. So making your event memorable and capturing the beautiful moments is become easier. You can leave the tasks for proffesional and make your event day more memorable.\r\n",
-    "ratings": "4.5"
-  },
-  {
-    "price": 4000,
-    "picture": "https://i.ibb.co/tP3JbYh/travelmanage.jpg",
-    "title": "Travel Management & Photography",
-    "description": "I ensure that itineraries are met and that customers are being informed in an entertaining manner the location they are touring and also capturing the moments into the frame. I have experience in traveling 50+ countries. I know how to make a successful travel with full of enjoy. I can arrange your dream travel destintions and other things like staying in hotels traveling one place to another.\r\n",
-    "ratings": "4.3"
+    "Que": "How does NodeJS handle multiple requests at the same time?",
+    "Ans": "NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. EventLoop is the listener for the EventQueue. If NodeJS can process the request without I/O blocking then the event loop would itself process the request and sends the response back to the client by itself. But, it is possible to process multiple requests parallelly using the NodeJS cluster module or worker_threads module."
   }
 ]
