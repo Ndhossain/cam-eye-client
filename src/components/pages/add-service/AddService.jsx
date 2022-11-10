@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import banner from '../../../assets/otherspagebanner.jpg';
@@ -35,6 +36,9 @@ const AddService = () => {
 
     return (
         <div className='mt-5'>
+            <Helmet>
+                <title>Add Service - Cam-Eye</title>
+            </Helmet>
             <PageBanner image={banner} title="Add new services" />
             <div>
                 <form onSubmit={handleSubmit(onSubmit)} className='p-5 bg-slate-100 flex flex-col gap-5 mt-10 rounded-lg'>

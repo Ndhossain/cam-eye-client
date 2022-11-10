@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
 import { SpinnerDotted } from 'spinners-react';
 import useAuth from '../../../hooks/useAuth';
@@ -46,6 +47,9 @@ const MyReviews = () => {
 
     return (
         <div className="overflow-x-auto w-full">
+            <Helmet>
+                <title>My Reviews - Cam-Eye</title>
+            </Helmet>
             {
                 loading ? (
                     <div className='h-screen flex justify-center items-center'>

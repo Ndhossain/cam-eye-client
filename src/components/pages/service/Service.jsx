@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { SpinnerDotted } from 'spinners-react';
 import banner from '../../../assets/otherspagebanner.jpg';
 import PageBanner from '../../common/PageBanner';
@@ -33,6 +34,9 @@ const Service = () => {
 
     return (
         <div className='mt-5'>
+            <Helmet>
+                <title>Services - Cam-Eye</title>
+            </Helmet>
             <PageBanner image={banner} title='Services' />
             {
                 loading && (

@@ -1,11 +1,15 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { AiFillStar } from 'react-icons/ai';
+import { Helmet } from 'react-helmet';
 
 const DetailsOfService = ({ serviceDetails }) => {
     const { title, picture, price, description, ratings } = serviceDetails;
     return (
         <div className='md:basis-2/4'>
+            <Helmet>
+                <title>Service Details - Cam-Eye</title>
+            </Helmet>
             <PhotoProvider>
                 <div>
                     <PhotoView src={picture}>

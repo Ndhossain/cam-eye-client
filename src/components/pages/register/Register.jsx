@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -45,6 +46,9 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Register - Cam-Eye</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className='mx-auto flex flex-col w-full sm:w-3/4 md:w-2/4 lg:w-1/4 gap-5 p-5 shadow-2xl rounded-lg mt-10 md:mt-16'>
                 <h1 className='text-4xl font-semibold'>Register now</h1>
                 {error && <p className='text-red-400'>{error}</p>}
