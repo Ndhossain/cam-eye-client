@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaUserCircle } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
 
 const ReviewContainer = ({review, setDeleteId}) => {
@@ -46,7 +47,9 @@ const ReviewContainer = ({review, setDeleteId}) => {
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
-                                <img src={userPhotoURL} alt={userName} />
+                                {
+                                    userPhotoURL ? (<img className='h-12 w-12 rounded-full' src={userPhotoURL} alt={userName} />) : (<FaUserCircle size={48} />)
+                                }
                             </div>
                         </div>
                         <div>

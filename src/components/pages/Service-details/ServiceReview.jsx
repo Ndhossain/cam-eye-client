@@ -1,11 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AiOutlineSend } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import ReviewContainer from './ReviewContainer';
+import ServiceReviewContainer from './ServiceReviewContainer';
 
 const ServiceReview = ({ serviceDetails }) => {
     const [review, setReview] = useState('');
@@ -29,7 +28,7 @@ const ServiceReview = ({ serviceDetails }) => {
         }
         const data = {
             review,
-            uid: currentUser.uid,
+            uid: currentUser?.uid,
             userPhotoURL: currentUser.photoURL,
             userName: currentUser.displayName,
             email: currentUser.email,
@@ -63,7 +62,7 @@ const ServiceReview = ({ serviceDetails }) => {
             <div className='h-full p-3 overflow-y-scroll overflow-x-auto'>
                 {
                     reviewData.length > 0 ? (
-                        reviewData.map((reviewInfo) => <ReviewContainer reviewInfo={reviewInfo} />)
+                        reviewData.map((reviewInfo) => <ServiceReviewContainer key={reviewInfo._id} reviewInfo={reviewInfo} />)
                     ) : (
                         <h1 className='text-center'>No Review Available for this service</h1>
                     )
