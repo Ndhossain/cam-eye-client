@@ -79,7 +79,7 @@ const Login = () => {
                 </div>
                 <button disabled={loading} type='submit' className="btn btn-primary w-full">
                     {
-                        loading ? <SpinnerDotted size={30} thickness={200} color={'#0077FF'} /> : 'Register'
+                        loading ? <SpinnerDotted size={30} thickness={200} color={'#0077FF'} /> : 'Log In'
                     }
                 </button>
                 <p className='text-sm'>Not have a account. 
