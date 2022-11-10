@@ -23,7 +23,7 @@ const ReviewContainer = ({review, setDeleteId}) => {
         }
         axios({
             method: 'PATCH',
-            url: `http://localhost:5000/reviews/${_id}?uid=${uid}`,
+            url: `https://cam-eye-server-side.vercel.app/reviews/${_id}?uid=${uid}`,
             data: {review: newReviewContent},
             headers: {
                 authorization: `bearer ${localStorage.getItem('camEye-token')}`

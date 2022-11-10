@@ -12,7 +12,7 @@ const HomeServiceSection = () => {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: `http://localhost:5000/services?page=${page}&size=${size}`
+            url: `https://cam-eye-server-side.vercel.app/services?page=${page}&size=${size}`
         }).then((res) => {
             setServicesData(res.data.services);
         }).catch(err => {

@@ -17,7 +17,7 @@ const AddService = () => {
         data.ratings = 0;
         axios({
             method: 'POST',
-            url: `http://localhost:5000/services?uid=${currentUser.uid}`,
+            url: `https://cam-eye-server-side.vercel.app/services?uid=${currentUser.uid}`,
             data: data,
             headers: {
                 authorization: `bearer ${localStorage.getItem('camEye-token')}`

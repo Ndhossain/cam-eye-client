@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
+import Layout from "../components/layout/Layout";
+import AddService from "../components/pages/add-service/AddService";
 import Blogs from "../components/pages/blogs/Blogs";
 import Home from "../components/pages/home/Home";
 import Login from "../components/pages/login/Login";
-import Register from "../components/pages/register/Register";
-import Service from "../components/pages/service/Service";
-import Layout from "../components/layout/Layout";
-import ServiceDetails from "../components/pages/Service-details/ServiceDetails"
-import PrivateRoute from "../components/pages/private/PrivateRoute";
 import MyReviews from "../components/pages/myreviews/MyReviews";
-import AddService from "../components/pages/add-service/AddService";
+import PrivateRoute from "../components/pages/private/PrivateRoute";
+import Register from "../components/pages/register/Register";
+import ServiceDetails from "../components/pages/Service-details/ServiceDetails";
+import Service from "../components/pages/service/Service";
 
 const router = createBrowserRouter([
     {
@@ -21,12 +21,12 @@ const router = createBrowserRouter([
             {path: '/register', element: <Register />},
             {
                 path: '/blogs',
-                loader: () => fetch('http://localhost:5000/blogs'),
+                loader: () => fetch('https://cam-eye-server-side.vercel.app/blogs'),
                 element: <Blogs />
             },
             {
                 path: '/service-details/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/service-details/${params.id}`),
+                loader: ({params}) => fetch(`https://cam-eye-server-side.vercel.app/service-details/${params.id}`),
                 element: <ServiceDetails />,
             },
             {

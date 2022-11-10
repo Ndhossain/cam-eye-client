@@ -1,30 +1,34 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { SpinnerDotted } from 'spinners-react';
 import useAuth from '../../../hooks/useAuth';
 import ReviewContainer from './ReviewContainer';
 
 const MyReviews = () => {
+    const [loading, setLoading] = useState(false);
     const {currentUser} = useAuth();
     const [myReviews, setMyReviews] = useState([]);
     const [deleteId, setDeleteId] = useState('')
 
     useEffect(() => {
+        setLoading(true);
         axios({
             method: 'GET',
-            url: `http://localhost:5000/my-review/${currentUser.uid}`,
+            url: `https://cam-eye-server-side.vercel.app/my-review/${currentUser.uid}`,
             headers: {
                 authorization: `bearer ${localStorage.getItem('camEye-token')}`
             }
         }).then(res => {
             setMyReviews(res.data);
+            setLoading(false);
         })
     }, [currentUser.uid]);
 
     const handleDelete = () => {
         axios({
             method: 'DELETE',
-            url: `http://localhost:5000/reviews/${deleteId}?uid=${currentUser.uid}`,
+            url: `https://cam-eye-server-side.vercel.app/reviews/${deleteId}?uid=${currentUser.uid}`,
             headers: {
                 authorization: `bearer ${localStorage.getItem('camEye-token')}`
             }
@@ -42,42 +46,50 @@ const MyReviews = () => {
 
     return (
         <div className="overflow-x-auto w-full">
-        <table className="table w-full">
-            <thead>
-            <tr>
-                <th>
-                <label>
-                    Delete
-                </label>
-                </th>
-                <th>User Info</th>
-                <th>Service</th>
-                <th>Review & Time</th>
-                <th></th>
-            </tr>
-            </thead>
-
-            <tbody>
             {
-                myReviews.length > 0 ? (
-                    myReviews.map(review => (
-                        <ReviewContainer 
-                            key={review._id} 
-                            review={review}
-                            setDeleteId={setDeleteId}
-                        />
-                    ))
-                    ) : (
-                    <tr>
-                        <td>
-                            <h1 className='text-center text-4xl font-bold'>No Review Added. Add a review.</h1>
-                        </td>
-                    </tr>
+                loading ? (
+                    <div className='h-screen flex justify-center items-center'>
+                        <SpinnerDotted size={30} thickness={200} color={'#0077FF'} />
+                    </div>
+                ) : (
+                    <table className="table w-full">
+                        <thead>
+                        <tr>
+                            <th>
+                            <label>
+                                Delete
+                            </label>
+                            </th>
+                            <th>User Info</th>
+                            <th>Service</th>
+                            <th>Review & Time</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {
+                            myReviews.length > 0 ? (
+                                myReviews.map(review => (
+                                    <ReviewContainer 
+                                        key={review._id} 
+                                        review={review}
+                                        setDeleteId={setDeleteId}
+                                    />
+                                ))
+                                ) : (
+                                <tr>
+                                    <td>
+                                        <h1 className='text-center text-4xl font-bold'>No Review Added. Add a review.</h1>
+                                    </td>
+                                </tr>
+                            )
+                        }
+                        </tbody>
+
+                    </table>
                 )
             }
-            </tbody>
-
-        </table>
 
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">

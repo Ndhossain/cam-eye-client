@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
-const SocialLogin = ({ setError }) => {
+const SocialLogin = ({ setError, from = '/' }) => {
     const { providerLogin, setLoading, loading } = useAuth();
     const navigate = useNavigate();
     const googleProvider = new GoogleAuthProvider();
@@ -14,7 +14,7 @@ const SocialLogin = ({ setError }) => {
         setError(null);
         try {
             const res = await providerLogin(googleProvider);
-            const response = await fetch('http://localhost:5000/jwt', {
+            const response = await fetch('https://cam-eye-server-side.vercel.app/jwt', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -24,7 +24,7 @@ const SocialLogin = ({ setError }) => {
             const token = await response.json();
             localStorage.setItem('camEye-token', token.jwt);
             toast.success('Successfully Logged In');
-            navigate('/');
+            navigate(from);
         } catch (err) {
             setError(err.message);
             toast.error('Something went wrong!');

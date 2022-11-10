@@ -6,7 +6,6 @@ import BlogContainer from './BlogContainer';
 
 const Blogs = () => {
     const blogData = useLoaderData();
-    console.log(blogData)
 
     return (
         <div className='mt-5'>

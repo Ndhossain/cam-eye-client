@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import { SpinnerDotted } from 'spinners-react';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../login/SocialLogin';
 
@@ -19,7 +20,7 @@ const Register = () => {
                 return setError("Password doesn't match");
             }
             const res = await registerUser(data.email, data.password, data.name);
-            const response = await fetch('http://localhost:5000/jwt', {
+            const response = await fetch('https://cam-eye-server-side.vercel.app/jwt', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -102,7 +103,15 @@ const Register = () => {
                         <span className="label-text">I accepts terms and conditions.</span> 
                     </label>
                 </div>
-                <button disabled={!conditions || loading ? true : false} type='submit' className="btn btn-primary w-full">Register</button>
+                <button 
+                    disabled={!conditions || loading ? true : false} 
+                    type='submit' 
+                    className="btn btn-primary w-full"
+                >
+                    {
+                        loading ? <SpinnerDotted size={30} thickness={200} color={'#0077FF'} /> : 'Register'
+                    }
+                </button>
                 <p className='text-sm'>Already have a account. <Link className='text-primary' to='/login'>Log In</Link> now.</p>
                 <div className="divider">OR</div>
                 <SocialLogin setError={setError} />

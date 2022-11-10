@@ -14,7 +14,7 @@ const ServiceReview = ({ serviceDetails }) => {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: `http://localhost:5000/reviews/${serviceDetails._id}`,
+            url: `https://cam-eye-server-side.vercel.app/reviews/${serviceDetails._id}`,
         }).then(res => {
             setReviewData(res.data);
         }).catch(err => {
@@ -37,7 +37,7 @@ const ServiceReview = ({ serviceDetails }) => {
         };
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/reviews',
+            url: 'https://cam-eye-server-side.vercel.app/reviews',
             data: data,
             headers: {
                 authorization: `bearer ${localStorage.getItem('camEye-token')}`
