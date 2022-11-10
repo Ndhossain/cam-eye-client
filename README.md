@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Live Site Link: 
+### Live Site Link: https://cam-eye.web.app/
 
 ## Technologies:
 
