@@ -9,7 +9,7 @@ const ContactForm = () => {
     const onSubmit = (data) => {
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/contact-message',
+            url: 'https://cam-eye-server-side.vercel.app/contact-message',
             data: data
         }).then(res => {
             console.log(res);
