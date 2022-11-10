@@ -64,7 +64,7 @@ const ServiceReview = ({ serviceDetails }) => {
                     reviewData.length > 0 ? (
                         reviewData.map((reviewInfo) => <ServiceReviewContainer key={reviewInfo._id} reviewInfo={reviewInfo} />)
                     ) : (
-                        <h1 className='text-center'>No Review Available for this service</h1>
+                        <h1 className='text-center'>No Review added for this service</h1>
                     )
                 }
             </div>
@@ -80,7 +80,8 @@ const ServiceReview = ({ serviceDetails }) => {
                                 className='resize-none h-16 w-full outline-none p-3 bg-transparent' 
                                 name="comment" 
                                 placeholder='Write a Review here'
-                                onBlur={(e) => setReview(e.target.value)}
+                                onChange={(e) => setReview(e.target.value)}
+                                value={review}
                             />
                             <button
                                 onClick={handleSubmitReview}

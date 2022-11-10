@@ -8,8 +8,8 @@ import useAuth from '../../../hooks/useAuth';
 import PageBanner from '../../common/PageBanner';
 
 const AddService = () => {
-    const { register, handleSubmit } = useForm();
-    const { currentUser } = useAuth();
+    const { register, handleSubmit, reset } = useForm();
+    const { currentUser, logout } = useAuth();
 
     const onSubmit = (data) => {
         if(!data.title || !data.price || !data.picture || !data.description || data.price < 0) {
@@ -24,13 +24,18 @@ const AddService = () => {
                 authorization: `bearer ${localStorage.getItem('camEye-token')}`
             },
         }).then(res => {
-            console.log(res);
-            if(res.data) {
+            if(res.data.acknowledged) {
                 toast.success('Successfully added service');
+                reset();
             }
         }).catch(err => {
             console.log(err);
-            toast.error('Something went wrong');
+            if(err.response.status === 403 || err.response.status === 401) {
+                logout();
+                toast.error('Please Login again');
+            } else {
+                toast.error('Something went wrong');
+            }
         })
     }
 

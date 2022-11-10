@@ -8,9 +8,9 @@ import ReviewContainer from './ReviewContainer';
 
 const MyReviews = () => {
     const [loading, setLoading] = useState(false);
-    const {currentUser} = useAuth();
+    const {currentUser, logout} = useAuth();
     const [myReviews, setMyReviews] = useState([]);
-    const [deleteId, setDeleteId] = useState('')
+    const [deleteId, setDeleteId] = useState('');
 
     useEffect(() => {
         setLoading(true);
@@ -23,8 +23,16 @@ const MyReviews = () => {
         }).then(res => {
             setMyReviews(res.data);
             setLoading(false);
+        }).catch(err => {
+            console.log(err);
+            if(err.response.status === 403 || err.response.status === 401) {
+                logout();
+                toast.error('Please Login again');
+            } else {
+                toast.error('Something went wrong');
+            }
         })
-    }, [currentUser.uid]);
+    }, [currentUser.uid, logout]);
 
     const handleDelete = () => {
         axios({
@@ -41,7 +49,12 @@ const MyReviews = () => {
             }
         }).catch(err => {
             console.log(err);
-            toast.error('Something went wrong');
+            if(err.response.status === 403 || err.response.status === 401) {
+                logout();
+                toast.error('Please Login again');
+            } else {
+                toast.error('Something went wrong');
+            }
         })
     }
 

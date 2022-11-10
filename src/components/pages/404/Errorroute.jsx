@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate, useRouteError } from 'react-router-dom';
 
 const Errorroute = () => {
@@ -9,6 +10,9 @@ const Errorroute = () => {
 
     return (
         <div className='min-w-screen min-h-screen flex flex-col justify-center items-center gap-2'>
+            <Helmet>
+                <title>404 - Cam-Eye</title>
+            </Helmet>
             <h1 className='text-9xl font-bold text-primary'>{error.status}</h1>
             <p className='text-xl font-medium'>Page {error.statusText}</p>
             <p className='text-base'>The page you are looking for does not seem to exist.</p>

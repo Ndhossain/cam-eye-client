@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaUserCircle } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
+import useAuth from '../../../hooks/useAuth';
 
 const ReviewContainer = ({review, setDeleteId}) => {
     const [editMode, setEditMode] = useState(false);
     const {serviceName, userName, userPhotoURL, email, review: reviewContent, date, _id, uid} = review;
     const [newReviewContent, setNewReviewContent] = useState(reviewContent);
+    const { logout } = useAuth();
 
     // date
     const day = new Date(date).getDate();
@@ -32,6 +34,14 @@ const ReviewContainer = ({review, setDeleteId}) => {
             if(res.data.matchedCount === 1 || res.data.modifiedCount === 1) {
                 setEditMode(false);
                 toast.success('Updated');
+            }
+        }).catch(err => {
+
+            if(err.response.status === 403 || err.response.status === 401) {
+                logout();
+                toast.error('Please Login again');
+            } else {
+                toast.error('Something went wrong');
             }
         })
     }
