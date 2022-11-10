@@ -60,7 +60,7 @@ const ServiceReview = ({ serviceDetails }) => {
     return (
         <div className='md:basis-2/4 border border-slate-300 h-screen rounded-lg flex flex-col justify-between'>
             <h2 className='text-center p-2 border-b bg-slate-200 font-bold'>Reviews</h2>
-            <div className='h-full p-3 overflow-x-scroll'>
+            <div className='h-full p-3 overflow-y-scroll overflow-x-auto'>
                 {
                     reviewData.length > 0 ? (
                         reviewData.map((reviewInfo) => <ReviewContainer reviewInfo={reviewInfo} />)

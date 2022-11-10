@@ -56,7 +56,7 @@ const Navbar = () => {
                                     </label>
                                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
                                         <li><Link className='w-full'>Add Services</Link></li>
-                                        <li><Link className='w-full'>My Reviews</Link></li>
+                                        <li><Link to='/my-reviews' className='w-full'>My Reviews</Link></li>
                                         <li>
                                             <button 
                                                 className='w-full' 

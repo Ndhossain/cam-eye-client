@@ -16,10 +16,7 @@ const BannerItem = ({image}) => {
                 </p>
                 <div className="flex gap-2 sm:gap-5 justify-center">
                     <Link to='/services' className="btn btn-primary">
-                        Services
-                    </Link>
-                    <Link className="btn btn-primary btn-outline rounded-lg">
-                        Contacts
+                        Check our Services
                     </Link>
                 </div>
             </div>
